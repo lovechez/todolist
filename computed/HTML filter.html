@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>computed</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="box">
+        <input type="text" v-model="msg | filterHtml"/>
+        <br/>
+        <div v-html="msg">
+
+        </div>
+    </div>
+    <script>
+
+        Vue.filter('filterHtml',{
+            read: function (input) { // m-v
+                return input.replace(/<[^<]+>/g,'');
+            },
+            write: function (val) { //v-m
+                return val;
+            }
+        });
+
+        var vm=new Vue({
+            data:{
+                msg:'<strong>chenz</strong>'
+            },
+            methods:{
+
+            }
+        }).$mount('#box');
+
+    </script>
+</body>
+</html>

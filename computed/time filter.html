@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>computed</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="box">
+        {{a | date}}
+    </div>
+    <script>
+
+        Vue.filter('date', function (input) {
+            var oDate = new Date(input);
+            return oDate.getFullYear()+'-'+(oDate.getMonth()+1)+'-'+oDate.getDay()+' '+oDate.getHours()+':'+oDate.getMinutes()+':'+oDate.getSeconds();
+        });
+        var vm=new Vue({
+            data:{
+                msg:'<strong>chenz</strong>'
+            },
+            methods:{
+
+            }
+        }).$mount('#box');
+
+    </script>
+</body>
+</html>
